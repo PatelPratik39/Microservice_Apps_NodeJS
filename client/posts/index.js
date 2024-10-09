@@ -1,9 +1,11 @@
 const express = require("express");
-const { randomBytes } = require("crypto");
+const { randomBytes } = require("crypto"); // random id generation pakcgae
 const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
+
+// saving thre posts here
 const posts = {};
 
 app.get("/posts", (req, res) => {
