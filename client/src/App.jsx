@@ -1,6 +1,6 @@
-import react, { useState } from "react";
 
-import "./App.css";
+
+// import "./App.css";
 import PostCreate from "./PostCreate";
 import PostLists from "../../posts/PostLists";
 
