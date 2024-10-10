@@ -1,6 +1,6 @@
 const express = require("express");
-const { randomBytes } = require("crypto"); // random id generation pakcgae
 const bodyParser = require("body-parser");
+const { randomBytes } = require("crypto");
 const cors = require("cors");
 const axios = require("axios");
 
@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const commentsByPostId = {}; // storing temporary data
+const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
@@ -19,6 +19,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   const { content } = req.body;
 
   const comments = commentsByPostId[req.params.id] || [];
+
   comments.push({ id: commentId, content });
 
   commentsByPostId[req.params.id] = comments;
@@ -31,15 +32,16 @@ app.post("/posts/:id/comments", async (req, res) => {
       postId: req.params.id
     }
   });
+
   res.status(201).send(comments);
 });
 
 app.post("/events", (req, res) => {
-  console.log("Event Received:", req.body);
+  console.log("Event Received", req.body.type);
+
   res.send({});
 });
 
-
 app.listen(4001, () => {
-  console.log("Port is running at 4001");
+  console.log("Listening on 4001");
 });

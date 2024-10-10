@@ -17,6 +17,7 @@ app.post("/events", (req, res) => {
 
   if (type === "PostCreated") {
     const { id, title } = data;
+
     posts[id] = { id, title, comments: [] };
   }
 
@@ -26,11 +27,12 @@ app.post("/events", (req, res) => {
     const post = posts[postId];
     post.comments.push({ id, content });
   }
+
   console.log(posts);
 
-  res.send();
+  res.send({});
 });
 
 app.listen(4002, () => {
-  console.log("Port is running at 4002");
+  console.log("Listening on 4002");
 });

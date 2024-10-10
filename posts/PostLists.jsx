@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentCreate from "../client/src/CommentCreate";
-import CommnetsList from "../client/src/CommnetsList";
+import CommnetsList from "../client/src/CommentsList";
 
 function PostLists() {
   const [posts, setPosts] = useState({});
